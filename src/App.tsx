@@ -6,7 +6,7 @@ import TransactionBuckets from './components/TransactionBuckets';
 
 //GraphQL endpoint
 const httpLink = new HttpLink({
-  uri: 'localhost:5001/graphql'
+  uri: 'http://localhost:5001/graphql'
 })
 
 const client = new ApolloClient({
