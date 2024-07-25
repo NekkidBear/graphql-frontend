@@ -1,0 +1,26 @@
+{
+  "data": {
+    "firstFiveCustomers": [
+      {
+        "username": "gregoryharrison",
+        "name": "Natalie Ford"
+      },
+      {
+        "username": "nelsonmaria",
+        "name": "John Vega"
+      },
+      {
+        "username": "fmiller",
+        "name": "Elizabeth Ray"
+      },
+      {
+        "username": "andrewhamilton",
+        "name": "Gary Nichols"
+      },
+      {
+        "username": "glopez",
+        "name": "Jennifer Lawrence"
+      }
+    ]
+  }
+}
