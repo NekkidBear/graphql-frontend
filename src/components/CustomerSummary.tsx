@@ -57,6 +57,35 @@ const CustomerAccountSummary: React.FC<CustomerAccountSummaryProps> = ({
       </h2>
 
       <div className="mb-8">
+        <h3 className="text-xl font-semibold mb-2">Portfolio Distribution</h3>
+        <ResponsiveContainer width="100%" height={400}>
+          <PieChart>
+            <Pie
+              data={accountBalances}
+              dataKey="balance"
+              nameKey="product"
+              cx="50%"
+              cy="50%"
+              outerRadius={150}
+              fill="#8884d8"
+              label={({ name, percent }: { name: string; percent: number }) =>
+                `${name} ${(percent * 100).toFixed(0)}%`
+              }
+            >
+              {accountBalances.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+            <Tooltip formatter={(value: number) => `$${value.toFixed(2)}`} />{" "}
+            <Legend />
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
+
+      <div className="mb-8">
         <h3 className="text-xl font-semibold mb-2">Balance by Product</h3>
         <table className="min-w-full bg-white border border-gray-300">
           <thead>
@@ -92,35 +121,6 @@ const CustomerAccountSummary: React.FC<CustomerAccountSummaryProps> = ({
             </tr>
           </tfoot>
         </table>
-      </div>
-
-      <div className="mb-8">
-        <h3 className="text-xl font-semibold mb-2">Portfolio Distribution</h3>
-        <ResponsiveContainer width="100%" height={400}>
-          <PieChart>
-            <Pie
-              data={accountBalances}
-              dataKey="balance"
-              nameKey="product"
-              cx="50%"
-              cy="50%"
-              outerRadius={150}
-              fill="#8884d8"
-              label={({ name, percent }: { name: string; percent: number }) =>
-                `${name} ${(percent * 100).toFixed(0)}%`
-              }
-            >
-              {accountBalances.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length]}
-                />
-              ))}
-            </Pie>
-            <Tooltip formatter={(value: number) => `$${value.toFixed(2)}`} />{" "}
-            <Legend />
-          </PieChart>
-        </ResponsiveContainer>
       </div>
     </div>
   );
