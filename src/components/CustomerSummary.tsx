@@ -3,9 +3,9 @@ import { useQuery, gql } from '@apollo/client';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 
 const GET_CUSTOMER_SUMMARY = gql`
-  query GetCustomerSummary($customerId: String!) {
-    customerWithBalances(id: $customerId) {
-      id
+  query GetCustomerSummary($username: String!) {
+    customerWithBalances(username: $username) {
+      username
       name
       accountBalances {
         product
@@ -15,8 +15,9 @@ const GET_CUSTOMER_SUMMARY = gql`
   }
 `;
 
+// Use the username instead of customerId in the frontend
 interface CustomerAccountSummaryProps {
-  customerId: string;
+  username: string;
 }
 
 interface AccountSummary {
@@ -26,13 +27,14 @@ interface AccountSummary {
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
 
-const CustomerAccountSummary: React.FC<CustomerAccountSummaryProps> = ({ customerId }) => {
+const CustomerAccountSummary: React.FC<CustomerAccountSummaryProps> = ({ username }) => {
   const { loading, error, data } = useQuery(GET_CUSTOMER_SUMMARY, {
-    variables: { customerId },
+    variables: { username },
   });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
+  console.log(data);
 
   const accountBalances: AccountSummary[] = data?.customerWithBalances?.accountBalances || [];
   const totalBalance = accountBalances.reduce((sum, account) => sum + account.balance, 0);
@@ -84,7 +86,7 @@ const CustomerAccountSummary: React.FC<CustomerAccountSummaryProps> = ({ custome
               cy="50%"
               outerRadius={150}
               fill="#8884d8"
-              label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+              label={({ product, percent }) => `${product} ${(percent * 100).toFixed(0)}%`}
             >
               {accountBalances.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
