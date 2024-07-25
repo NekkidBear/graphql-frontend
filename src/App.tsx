@@ -17,7 +17,7 @@ const App: React.FC = () => {
     <ApolloProvider client={client}>
       <div className="App">
         <h1>Customer Account Summary</h1>
-        <CustomerAccountSummary customerId="1" />
+        <CustomerAccountSummary username="lejoshua" />
       </div>
     </ApolloProvider>
   );
