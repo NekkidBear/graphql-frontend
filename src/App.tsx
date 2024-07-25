@@ -8,6 +8,16 @@ import {
 import TransactionBuckets from "./components/TransactionBuckets";
 import Customers from "./components/Customers";
 import Accounts from "./components/Accounts";
+import React from "react";
+import {
+  ApolloProvider,
+  ApolloClient,
+  InMemoryCache,
+  HttpLink,
+} from "@apollo/client";
+import TransactionBuckets from "./components/TransactionBuckets";
+import Customers from "./components/Customers";
+import Accounts from "./components/Accounts";
 
 // GraphQL endpoint
 const httpLink = new HttpLink({
