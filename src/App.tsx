@@ -12,7 +12,7 @@ import Accounts from "./components/Accounts";
 
 // GraphQL endpoint
 const httpLink = new HttpLink({
-  uri: "http://localhost:5001/graphql",
+  uri: "https://mason-tanaka-c0244r0vl-nekkidbears-projects.vercel.app/graphql",
 });
 
 const client = new ApolloClient({
