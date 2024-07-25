@@ -1,8 +1,6 @@
 import React from 'react';
 import { ApolloProvider, ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
-import Accounts from './components/Accounts';
-import Customers from './components/Customers';
-import TransactionBuckets from './components/TransactionBuckets';
+import CustomerAccountSummary from './components/CustomerSummary';
 
 //GraphQL endpoint
 const httpLink = new HttpLink({
@@ -19,9 +17,7 @@ const App: React.FC = () => {
     <ApolloProvider client={client}>
       <div className="App">
         <h1>GraphQL Data Display</h1>
-        <Accounts />
-        <Customers />
-        <TransactionBuckets />
+        <CustomerAccountSummary )/>
       </div>
     </ApolloProvider>
   );
