@@ -9,6 +9,7 @@ import TransactionBuckets from "./components/TransactionBuckets";
 import Customers from "./components/Customers";
 import Accounts from "./components/Accounts";
 
+
 // GraphQL endpoint
 const httpLink = new HttpLink({
   uri: "http://localhost:5001/graphql",
